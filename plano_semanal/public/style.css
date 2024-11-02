@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    margin: 20px auto;
+    width: 300px;
+}
+
+label, select, input {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#calendario {
+    margin: 20px auto;
+    width: 80%;
+    height: 500px;
+    border: 1px solid #ccc;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(48, 1fr); /* Dividido em blocos de 15 minutos */
+}
+
+#calendario div {
+    border: 1px solid #ccc;
+    padding: 2px;
+    text-align: center;
+}
