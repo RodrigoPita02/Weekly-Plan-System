@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plano de Atividades</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Plano de Atividades</h1>
+    
+    <!-- Formulário para adicionar atividades -->
+    <form id="activityForm">
+      <label for="diaSemana">Dia da Semana:</label>
+      <select id="diaSemana">
+        <option value="1">Segunda</option>
+        <option value="2">Terça</option>
+        <option value="3">Quarta</option>
+        <option value="4">Quinta</option>
+        <option value="5">Sexta</option>
+        <option value="6">Sábado</option>
+        <option value="7">Domingo</option>
+      </select>
+
+      <label for="horaInicio">Hora de Início:</label>
+      <input type="time" id="horaInicio" required>
+
+      <label for="horaFim">Hora de Fim:</label>
+      <input type="time" id="horaFim" required>
+
+      <label for="tipoAtividade">Tipo de Atividade:</label>
+      <select id="tipoAtividade"></select>
+
+      <label for="valencia">Valência:</label>
+      <select id="valencia"></select>
+
+      <button type="submit">Adicionar Plano</button>
+    </form>
+
+    <!-- Calendário semanal -->
+    <div class="calendar">
+      <div class="calendar-header">
+        <div class="time-slot"></div>
+        <div>Segunda</div>
+        <div>Terça</div>
+        <div>Quarta</div>
+        <div>Quinta</div>
+        <div>Sexta</div>
+        <div>Sábado</div>
+        <div>Domingo</div>
+      </div>
+      <div class="calendar-body">
+        <!-- Linhas de horários (08:00 às 20:00, em intervalos de 15 minutos) -->
+        ${generateTimeSlots()}
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

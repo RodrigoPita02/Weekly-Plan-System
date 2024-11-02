@@ -1,21 +1,53 @@
+// script.js
 document.addEventListener('DOMContentLoaded', () => {
-    const calendario = document.getElementById('calendario');
+    loadTipoAtividades();
+    loadValencias();
 
-    fetch('/plano-semanal')
-        .then(response => response.json())
-        .then(planos => {
-            planos.forEach(plano => {
-                const diaIndex = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'].indexOf(plano.dia_semana);
-                const inicio = plano.hora_inicio.split(':');
-                const fim = plano.hora_fim.split(':');
-                const startBlock = (parseInt(inicio[0]) - 8) * 4 + parseInt(inicio[1]) / 15;
-                const endBlock = (parseInt(fim[0]) - 8) * 4 + parseInt(fim[1]) / 15;
-                
-                for (let i = startBlock; i < endBlock; i++) {
-                    const block = calendario.children[diaIndex + i * 5];
-                    block.style.backgroundColor = '#add8e6';
-                    block.innerText = `${plano.tipo_atividade} - ${plano.valencia}`;
-                }
-            });
-        });
+    document.getElementById('plano-form').addEventListener('submit', addPlanoAtividade);
 });
+
+function loadTipoAtividades() {
+    fetch('/api/tipo-atividades')
+        .then(response => response.json())
+        .then(data => {
+            const tipoSelect = document.getElementById('tipo');
+            data.forEach(tipo => {
+                let option = document.createElement('option');
+                option.value = tipo.id;
+                option.textContent = tipo.descricao;
+                tipoSelect.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Erro ao carregar tipos de atividades:', error));
+}
+
+function loadValencias() {
+    fetch('/api/valencias')
+        .then(response => response.json())
+        .then(data => {
+            const valenciaSelect = document.getElementById('valencia');
+            data.forEach(valencia => {
+                let option = document.createElement('option');
+                option.value = valencia.id;
+                option.textContent = valencia.descricao;
+                valenciaSelect.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Erro ao carregar valências:', error));
+}
+
+function addPlanoAtividade(event) {
+    event.preventDefault();
+    const dia = document.getElementById('dia').value;
+    const horaInicio = document.getElementById('horaInicio').value;
+    const horaFim = document.getElementById('horaFim').value;
+    const tipo = document.getElementById('tipo').value;
+    const valencia = document.getElementById('valencia').value;
+
+    const slot = document.createElement('div');
+    slot.className = 'slot';
+    slot.textContent = `${dia} - ${horaInicio} a ${horaFim}`;
+
+    document.getElementById('calendario').appendChild(slot);
+}
+
