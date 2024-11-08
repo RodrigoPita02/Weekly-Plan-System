@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <title>Agendamento Semanal</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css" rel="stylesheet">
 </head>
+
 <body>
   <h1>Agendamento Semanal</h1>
 
@@ -34,9 +36,41 @@
     <button type="submit">Agendar Atividade</button>
   </form>
 
+  <!-- Overlay e Modal para editar atividade -->
+  <div id="modalOverlay"></div>
+  <div id="editModal">
+    <form id="editForm">
+      <label>Dia da Semana:</label>
+      <select id="editDiaSemana">
+        <option value="Segunda">Segunda</option>
+        <option value="Terça">Terça</option>
+        <option value="Quarta">Quarta</option>
+        <option value="Quinta">Quinta</option>
+        <option value="Sexta">Sexta</option>
+      </select>
+
+      <label>Hora Início:</label>
+      <input type="time" id="editHoraInicio">
+
+      <label>Hora Fim:</label>
+      <input type="time" id="editHoraFim">
+
+      <label>Tipo de Atividade:</label>
+      <select id="editTipoAtividadeId"></select>
+
+      <label>Valência:</label>
+      <select id="editValenciaId"></select>
+
+      <button type="submit">Salvar Alterações</button>
+      <button type="button" id="deleteButton">Excluir</button>
+      <button type="button" id="cancelButton">Cancelar</button>
+    </form>
+  </div>
+
   <div id="calendar"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
   <script src="script.js"></script>
 </body>
+
 </html>

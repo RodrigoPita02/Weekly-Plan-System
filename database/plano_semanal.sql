@@ -36,7 +36,7 @@ CREATE TABLE `plano_atividades` (
   KEY `valencia_id` (`valencia_id`),
   CONSTRAINT `plano_atividades_ibfk_1` FOREIGN KEY (`tipo_atividade_id`) REFERENCES `tipo_atividades` (`id`),
   CONSTRAINT `plano_atividades_ibfk_2` FOREIGN KEY (`valencia_id`) REFERENCES `valencias` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,6 +45,7 @@ CREATE TABLE `plano_atividades` (
 
 LOCK TABLES `plano_atividades` WRITE;
 /*!40000 ALTER TABLE `plano_atividades` DISABLE KEYS */;
+INSERT INTO `plano_atividades` VALUES (20,'Segunda','08:00:00','10:00:00',3,3),(22,'Quinta','12:00:00','14:00:00',2,4),(24,'Terça','11:00:00','13:00:00',1,2),(25,'Quinta','09:00:00','11:00:00',4,6),(26,'Quarta','10:00:00','12:00:00',8,7);
 /*!40000 ALTER TABLE `plano_atividades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,6 +83,7 @@ DROP TABLE IF EXISTS `valencias`;
 CREATE TABLE `valencias` (
   `id` int NOT NULL AUTO_INCREMENT,
   `descricao` varchar(255) NOT NULL,
+  `cor` varchar(7) DEFAULT '#000000',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -92,7 +94,7 @@ CREATE TABLE `valencias` (
 
 LOCK TABLES `valencias` WRITE;
 /*!40000 ALTER TABLE `valencias` DISABLE KEYS */;
-INSERT INTO `valencias` VALUES (1,'Berçário'),(2,'Creche 12'),(3,'Creche 18'),(4,'Creche 2'),(5,'Pré 1'),(6,'Pré 2'),(7,'ATL');
+INSERT INTO `valencias` VALUES (1,'Berçário','#FF6347'),(2,'Creche 12','#4682B4'),(3,'Creche 18','#32CD32'),(4,'Creche 2','#FFD700'),(5,'Pré 1','#6A5ACD'),(6,'Pré 2','#FF4500'),(7,'ATL','#8A2BE2');
 /*!40000 ALTER TABLE `valencias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -113,4 +115,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-04 14:08:49
+-- Dump completed on 2024-11-08 11:57:58
