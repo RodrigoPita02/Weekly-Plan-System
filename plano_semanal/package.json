@@ -1,7 +1,7 @@
 {
   "name": "plano_semanal",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "bd.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"

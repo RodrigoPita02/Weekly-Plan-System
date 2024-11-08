@@ -1,130 +1,14 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f8f9fa;
-    margin: 0;
-    padding: 20px;
-}
-
-.container {
-    max-width: 900px; /* Aumentado para dar mais espaço */
-    margin: auto;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px; /* Adicionado espaço abaixo do título */
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold; /* Para maior ênfase */
-}
-
-select, input[type="time"], button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; /* Para garantir que o padding não afete a largura total */
-}
-
-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s; /* Efeito suave ao passar o mouse */
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-}
-
-th {
-    background-color: #f2f2f2;
-}
-
-tbody tr:hover {
-    background-color: #f1f1f1;
-}
-
-/* Adicionando estilos para o calendário */
-.fc {
-    font-family: 'Arial', sans-serif; /* Garantindo consistência com o resto do site */
-}
-
-.fc-toolbar {
-    margin-bottom: 20px; /* Espaço abaixo da barra de ferramentas do calendário */
-}
-
-.fc-daygrid-day {
-    vertical-align: top; /* Garante que o conteúdo fique alinhado no topo */
-}
-
-.fc-timeGrid-day {
-    height: auto; /* Garante que as células tenham a altura correta */
-}
-
-.fc-timeGrid-event {
-    margin: 0; /* Remove margens que podem estar empurrando o evento para baixo */
-    padding: 2px; /* Define o espaçamento interno dos eventos */
-    line-height: normal; /* Garante que o texto dos eventos seja exibido corretamente */
-}
-
-/* Removendo o espaço da primeira linha, se necessário */
-.fc-daygrid-week-number {
-    display: none; /* Se houver uma linha de número da semana, remova-a */
-}
-
-.fc-time-grid .fc-slats td {
-    height: 60px; /* Ajuste a altura dos slots de tempo */
-}
-
-.fc-time-grid .fc-slats {
-    border-top: 1px solid #ddd; /* Adiciona uma linha superior às células do tempo */
-}
-
-.fc .fc-day-grid-event {
-    padding: 5px 10px; /* Adiciona preenchimento aos eventos */
-    border-radius: 5px; /* Arredonda os cantos dos eventos */
-}
-
-.fc .fc-event {
-    margin: 2px; /* Adiciona um pequeno espaço entre os eventos */
-}
-
-/* Ajustes no visual dos eventos */
-.fc-event {
-    border-radius: 4px;
-    padding: 2px;
-    background-color: #007bff; /* Cor do evento */
-    color: white; /* Texto em branco */
-}
-
-/* Ajuste no estilo do evento quando é passado o mouse */
-.fc-event:hover {
-    opacity: 0.8; /* Leve transparência ao passar o mouse */
-}
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  form {
+    margin-bottom: 20px;
+  }
+  
+  #calendar {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  

@@ -1,58 +1,42 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script> <!-- Usando JSDelivr como CDN -->
-    <title>Plano Semanal</title>
+  <meta charset="UTF-8">
+  <title>Agendamento Semanal</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>Agendamento Semanal</h1>
-        <form id="atividadeForm">
-            <div class="form-group">
-                <label for="dia_semana">Dia da Semana:</label>
-                <select id="dia_semana" required>
-                    <option value="" disabled selected>Selecione o Dia da Semana</option>
-                    <option value="Segunda">Segunda</option>
-                    <option value="Terça">Terça</option>
-                    <option value="Quarta">Quarta</option>
-                    <option value="Quinta">Quinta</option>
-                    <option value="Sexta">Sexta</option>
-                    <option value="Sábado">Sábado</option>
-                    <option value="Domingo">Domingo</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="hora_inicio">Hora de Início:</label>
-                <input type="time" id="hora_inicio" required>
-            </div>
-            <div class="form-group">
-                <label for="hora_fim">Hora de Fim:</label>
-                <input type="time" id="hora_fim" required>
-            </div>
-            <div class="form-group">
-                <label for="tipo_atividade_id">Tipo de Atividade:</label>
-                <select id="tipo_atividade_id" required>
-                    <option value="" disabled selected>Selecione o Tipo de Atividade</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="valencia_id">Valência:</label>
-                <select id="valencia_id" required>
-                    <option value="" disabled selected>Selecione a Valência</option>
-                </select>
-            </div>
-            <button type="submit">Adicionar Atividade</button>
-        </form>
-        
-        <div id="calendario">
-            <h2>Calendário Semanal</h2>
-            <div id="fullcalendar"></div> <!-- Alterado para <div> para funcionar com FullCalendar -->
-        </div>
-    </div>
-    <script src="script.js"></script> <!-- O seu script deve ser carregado após o FullCalendar -->
+  <h1>Agendamento Semanal</h1>
+
+  <form id="scheduleForm">
+    <label>Dia da Semana:</label>
+    <select id="diaSemana">
+      <option value="Segunda">Segunda</option>
+      <option value="Terça">Terça</option>
+      <option value="Quarta">Quarta</option>
+      <option value="Quinta">Quinta</option>
+      <option value="Sexta">Sexta</option>
+    </select>
+
+    <label>Hora Início:</label>
+    <input type="time" id="horaInicio">
+
+    <label>Hora Fim:</label>
+    <input type="time" id="horaFim">
+
+    <label>Tipo de Atividade:</label>
+    <select id="tipoAtividadeId" required></select>
+
+    <label>Valência:</label>
+    <select id="valenciaId" required></select>
+
+    <button type="submit">Agendar Atividade</button>
+  </form>
+
+  <div id="calendar"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
