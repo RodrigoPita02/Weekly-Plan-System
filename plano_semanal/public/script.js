@@ -4,43 +4,55 @@ document.addEventListener('DOMContentLoaded', async function () {
   const editForm = document.getElementById('editForm');
   let currentEventId = null;
 
-  // Função para popular dropdown de tipos de atividades com valor atual
+  // Função para popular dropdown de tipos de atividades com valor selecionado
   async function populateTipoAtividade(selectElementId, selectedId = null) {
     const response = await fetch('/api/tipo_atividades');
     const tipos = await response.json();
     const selectElement = document.getElementById(selectElementId);
-    selectElement.innerHTML = '';  // Limpar opções existentes
+    selectElement.innerHTML = '<option value="" disabled>Selecione um tipo de atividade</option>'; // Reset
 
     tipos.forEach(tipo => {
       const option = document.createElement('option');
       option.value = tipo.id;
       option.textContent = tipo.descricao;
-      if (selectedId && tipo.id === selectedId) {
-        option.selected = true;  // Seleciona a opção correspondente ao valor atual
+
+      if (selectedId && parseInt(tipo.id) === parseInt(selectedId)) {
+        option.selected = true; // Seleciona a opção correta ao editar
       }
       selectElement.appendChild(option);
     });
+
+    // Forçar seleção se selectedId foi passado
+    if (selectedId) {
+      selectElement.value = selectedId;
+    }
   }
 
-  // Função para popular dropdown de valências com valor atual
+  // Função para popular dropdown de valências com valor selecionado
   async function populateValencia(selectElementId, selectedId = null) {
     const response = await fetch('/api/valencias');
     const valencias = await response.json();
     const selectElement = document.getElementById(selectElementId);
-    selectElement.innerHTML = '';  // Limpar opções existentes
+    selectElement.innerHTML = '<option value="" disabled>Selecione uma valência</option>'; // Reset
 
     valencias.forEach(valencia => {
       const option = document.createElement('option');
       option.value = valencia.id;
       option.textContent = valencia.descricao;
-      if (selectedId && valencia.id === selectedId) {
-        option.selected = true;  // Seleciona a opção correspondente ao valor atual
+
+      if (selectedId && parseInt(valencia.id) === parseInt(selectedId)) {
+        option.selected = true; // Seleciona a opção correta ao editar
       }
       selectElement.appendChild(option);
     });
+
+    // Forçar seleção se selectedId foi passado
+    if (selectedId) {
+      selectElement.value = selectedId;
+    }
   }
 
-  // Carregar dropdowns para o formulário principal
+  // Carregar dropdowns para o formulário principal (sem valor selecionado)
   await populateTipoAtividade('tipoAtividadeId');  // Formulário principal
   await populateValencia('valenciaId');            // Formulário principal
 
@@ -48,7 +60,8 @@ document.addEventListener('DOMContentLoaded', async function () {
   const calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: 'timeGridWeek',
     slotMinTime: "08:00:00",
-    slotMaxTime: "20:00:00",
+    slotMaxTime: "21:00:00",
+    nowIndicator: true,
     locale: 'pt-br',
     editable: true,
     events: '/api/atividades',
@@ -68,10 +81,11 @@ document.addEventListener('DOMContentLoaded', async function () {
       const diaSemana = info.event.start.toLocaleString('en-US', { weekday: 'long' });
       document.getElementById('editDiaSemana').value = diasSemanaMap[diaSemana] || 'Segunda';
 
+      // Preencher horário de início e fim
       document.getElementById('editHoraInicio').value = info.event.start.toISOString().substring(11, 16);
       document.getElementById('editHoraFim').value = info.event.end.toISOString().substring(11, 16);
 
-      // Preencher os selects de tipo de atividade e valência com o valor atual
+      // Preencher os selects de tipo de atividade e valência com os valores da atividade atual
       await populateTipoAtividade('editTipoAtividadeId', info.event.extendedProps.tipo_atividade_id);
       await populateValencia('editValenciaId', info.event.extendedProps.valencia_id);
 
@@ -81,23 +95,19 @@ document.addEventListener('DOMContentLoaded', async function () {
 
   calendar.render();
 
-  // Função para abrir o modal com overlay e evitar duplicação
+  // Abrir e fechar o modal
   function openEditModal() {
-    const editModal = document.getElementById('editModal');
-    const modalOverlay = document.getElementById('modalOverlay');
-
-    editModal.style.display = 'block';
-    modalOverlay.style.display = 'block';
+    document.getElementById('editModal').style.display = 'block';
+    document.getElementById('modalOverlay').style.display = 'block';
   }
 
-  // Função para fechar o modal e ocultar o overlay
   function closeEditModal() {
-    const editModal = document.getElementById('editModal');
-    const modalOverlay = document.getElementById('modalOverlay');
-
-    editModal.style.display = 'none';
-    modalOverlay.style.display = 'none';
+    document.getElementById('editModal').style.display = 'none';
+    document.getElementById('modalOverlay').style.display = 'none';
   }
+
+  // Vincular o evento de clique ao botão "Cancelar"
+  document.getElementById('cancelButton').addEventListener('click', closeEditModal);
 
   // Submissão do formulário principal
   form.addEventListener('submit', async (e) => {
@@ -187,7 +197,4 @@ document.addEventListener('DOMContentLoaded', async function () {
       closeEditModal();
     }
   });
-
-  // Vincular o evento de clique ao botão "Cancelar" para fechar o modal
-  document.getElementById('cancelButton').addEventListener('click', closeEditModal);
 });

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <title>Agendamento Semanal</title>
@@ -28,10 +27,14 @@
     <input type="time" id="horaFim">
 
     <label>Tipo de Atividade:</label>
-    <select id="tipoAtividadeId" required></select>
+    <select id="tipoAtividadeId" required>
+      <option value="" disabled selected>Selecione um tipo de atividade</option>
+    </select>
 
     <label>Valência:</label>
-    <select id="valenciaId" required></select>
+    <select id="valenciaId" required>
+      <option value="" disabled selected>Selecione uma valência</option>
+    </select>
 
     <button type="submit">Agendar Atividade</button>
   </form>
@@ -56,10 +59,14 @@
       <input type="time" id="editHoraFim">
 
       <label>Tipo de Atividade:</label>
-      <select id="editTipoAtividadeId"></select>
+      <select id="editTipoAtividadeId">
+        <!-- Opção vazia removida, será populada via script -->
+      </select>
 
       <label>Valência:</label>
-      <select id="editValenciaId"></select>
+      <select id="editValenciaId">
+        <!-- Opção vazia removida, será populada via script -->
+      </select>
 
       <button type="submit">Salvar Alterações</button>
       <button type="button" id="deleteButton">Excluir</button>
@@ -72,5 +79,4 @@
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
   <script src="script.js"></script>
 </body>
-
 </html>
