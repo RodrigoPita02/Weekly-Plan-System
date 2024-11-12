@@ -11,68 +11,48 @@
   <h1>Agendamento Semanal</h1>
 
   <form id="scheduleForm">
-    <label>Dia da Semana:</label>
-    <select id="diaSemana">
-      <option value="Segunda">Segunda</option>
-      <option value="Terça">Terça</option>
-      <option value="Quarta">Quarta</option>
-      <option value="Quinta">Quinta</option>
-      <option value="Sexta">Sexta</option>
-    </select>
-
+    <label>Data:</label>
+    <input type="date" id="data" required>
+  
     <label>Hora Início:</label>
-    <input type="time" id="horaInicio">
-
+    <input type="time" id="horaInicio" required>
+  
     <label>Hora Fim:</label>
-    <input type="time" id="horaFim">
-
+    <input type="time" id="horaFim" required>
+  
     <label>Tipo de Atividade:</label>
-    <select id="tipoAtividadeId" required>
-      <option value="" disabled selected>Selecione um tipo de atividade</option>
-    </select>
-
+    <select id="tipoAtividadeId" required></select>
+  
     <label>Valência:</label>
-    <select id="valenciaId" required>
-      <option value="" disabled selected>Selecione uma valência</option>
-    </select>
-
+    <select id="valenciaId" required></select>
+  
     <button type="submit">Agendar Atividade</button>
-  </form>
+  </form>  
 
   <!-- Overlay e Modal para editar atividade -->
   <div id="modalOverlay"></div>
   <div id="editModal">
     <form id="editForm">
-      <label>Dia da Semana:</label>
-      <select id="editDiaSemana">
-        <option value="Segunda">Segunda</option>
-        <option value="Terça">Terça</option>
-        <option value="Quarta">Quarta</option>
-        <option value="Quinta">Quinta</option>
-        <option value="Sexta">Sexta</option>
-      </select>
-
+      <label>Data:</label>
+      <input type="date" id="editData" required>
+  
       <label>Hora Início:</label>
-      <input type="time" id="editHoraInicio">
-
+      <input type="time" id="editHoraInicio" required>
+  
       <label>Hora Fim:</label>
-      <input type="time" id="editHoraFim">
-
+      <input type="time" id="editHoraFim" required>
+  
       <label>Tipo de Atividade:</label>
-      <select id="editTipoAtividadeId">
-        <!-- Opção vazia removida, será populada via script -->
-      </select>
-
+      <select id="editTipoAtividadeId" required></select>
+  
       <label>Valência:</label>
-      <select id="editValenciaId">
-        <!-- Opção vazia removida, será populada via script -->
-      </select>
-
+      <select id="editValenciaId" required></select>
+  
       <button type="submit">Salvar Alterações</button>
       <button type="button" id="deleteButton">Excluir</button>
       <button type="button" id="cancelButton">Cancelar</button>
     </form>
-  </div>
+  </div>  
 
   <div id="calendar"></div>
 

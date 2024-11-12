@@ -65,23 +65,17 @@ document.addEventListener('DOMContentLoaded', async function () {
     locale: 'pt-br',
     editable: true,
     events: '/api/atividades',
+    
+    eventDidMount: function(info) {
+      // Log para depuração dos eventos carregados no calendário
+      console.log('Evento renderizado no calendário:', info.event);
+    },
+    
     eventClick: async function (info) {
       currentEventId = info.event.id;
 
-      // Mapeamento dos dias da semana em inglês para português
-      const diasSemanaMap = {
-        'Monday': 'Segunda',
-        'Tuesday': 'Terça',
-        'Wednesday': 'Quarta',
-        'Thursday': 'Quinta',
-        'Friday': 'Sexta'
-      };
-
-      // Obter o dia da semana do evento e mapear para português
-      const diaSemana = info.event.start.toLocaleString('en-US', { weekday: 'long' });
-      document.getElementById('editDiaSemana').value = diasSemanaMap[diaSemana] || 'Segunda';
-
-      // Preencher horário de início e fim
+      // Preencher data, horário de início e fim no modal de edição
+      document.getElementById('editData').value = info.event.start.toISOString().split('T')[0];
       document.getElementById('editHoraInicio').value = info.event.start.toISOString().substring(11, 16);
       document.getElementById('editHoraFim').value = info.event.end.toISOString().substring(11, 16);
 
@@ -113,13 +107,13 @@ document.addEventListener('DOMContentLoaded', async function () {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const diaSemana = document.getElementById('diaSemana').value;
+    const data = document.getElementById('data').value;
     const horaInicio = document.getElementById('horaInicio').value;
     const horaFim = document.getElementById('horaFim').value;
     const tipoAtividadeId = document.getElementById('tipoAtividadeId').value;
     const valenciaId = document.getElementById('valenciaId').value;
 
-    if (!diaSemana || !horaInicio || !horaFim || !tipoAtividadeId || !valenciaId) {
+    if (!data || !horaInicio || !horaFim || !tipoAtividadeId || !valenciaId) {
       alert('Por favor, preencha todos os campos do formulário.');
       return;
     }
@@ -130,7 +124,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 
     const atividade = {
-      dia_semana: diaSemana,
+      data,
       hora_inicio: horaInicio,
       hora_fim: horaFim,
       tipo_atividade_id: tipoAtividadeId,
@@ -152,13 +146,13 @@ document.addEventListener('DOMContentLoaded', async function () {
   editForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const diaSemana = document.getElementById('editDiaSemana').value;
+    const data = document.getElementById('editData').value;
     const horaInicio = document.getElementById('editHoraInicio').value;
     const horaFim = document.getElementById('editHoraFim').value;
     const tipoAtividadeId = document.getElementById('editTipoAtividadeId').value;
     const valenciaId = document.getElementById('editValenciaId').value;
 
-    if (!diaSemana || !horaInicio || !horaFim || !tipoAtividadeId || !valenciaId) {
+    if (!data || !horaInicio || !horaFim || !tipoAtividadeId || !valenciaId) {
       alert('Por favor, preencha todos os campos do formulário de edição.');
       return;
     }
@@ -169,7 +163,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 
     const atividade = {
-      dia_semana: diaSemana,
+      data,
       hora_inicio: horaInicio,
       hora_fim: horaFim,
       tipo_atividade_id: tipoAtividadeId,

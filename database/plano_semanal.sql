@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS `plano_atividades`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `plano_atividades` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `dia_semana` enum('Segunda','Terça','Quarta','Quinta','Sexta') NOT NULL,
+  `data` date NOT NULL,
   `hora_inicio` time NOT NULL,
   `hora_fim` time NOT NULL,
   `tipo_atividade_id` int DEFAULT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE `plano_atividades` (
   KEY `valencia_id` (`valencia_id`),
   CONSTRAINT `plano_atividades_ibfk_1` FOREIGN KEY (`tipo_atividade_id`) REFERENCES `tipo_atividades` (`id`),
   CONSTRAINT `plano_atividades_ibfk_2` FOREIGN KEY (`valencia_id`) REFERENCES `valencias` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `plano_atividades` (
 
 LOCK TABLES `plano_atividades` WRITE;
 /*!40000 ALTER TABLE `plano_atividades` DISABLE KEYS */;
-INSERT INTO `plano_atividades` VALUES (20,'Segunda','08:00:00','10:00:00',3,3),(22,'Quinta','12:00:00','14:00:00',2,4),(24,'Terça','11:00:00','13:00:00',1,2),(25,'Quinta','09:00:00','11:00:00',4,6),(26,'Quarta','10:00:00','12:00:00',8,7);
+INSERT INTO `plano_atividades` VALUES (69,'2024-11-13','10:00:00','12:00:00',4,4),(70,'2024-11-12','09:00:00','10:00:00',6,7),(71,'2024-11-19','13:00:00','15:00:00',7,6);
 /*!40000 ALTER TABLE `plano_atividades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,4 +115,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-08 11:57:58
+-- Dump completed on 2024-11-12 12:16:42
