@@ -40,7 +40,8 @@ router.get('/tipo_atividades', async (req, res) => {
 router.get('/atividades', async (req, res) => {
   try {
     const [rows] = await db.query(`
-      SELECT p.id, p.data, p.hora_inicio, p.hora_fim, 
+      SELECT p.id, p.data, p.hora_inicio, p.hora_fim,
+             p.tipo_atividade_id, p.valencia_id,  -- Incluímos estes campos para uso no front-end
              p.grupo_repeticao, t.descricao AS tipo_atividade, v.descricao AS valencia, v.cor AS cor
       FROM plano_atividades p
       JOIN tipo_atividades t ON p.tipo_atividade_id = t.id
@@ -59,6 +60,8 @@ router.get('/atividades', async (req, res) => {
         end,
         color: atividade.cor,
         grupo_repeticao: atividade.grupo_repeticao,
+        tipo_atividade_id: atividade.tipo_atividade_id,  // Confirmação do novo campo
+        valencia_id: atividade.valencia_id  // Confirmação do novo campo
       });
 
       return {
@@ -67,7 +70,9 @@ router.get('/atividades', async (req, res) => {
         start,
         end,
         color: atividade.cor,
-        grupo_repeticao: atividade.grupo_repeticao
+        grupo_repeticao: atividade.grupo_repeticao,
+        tipo_atividade_id: atividade.tipo_atividade_id,  // Adicionamos ao retorno
+        valencia_id: atividade.valencia_id  // Adicionamos ao retorno
       };
     });
 
