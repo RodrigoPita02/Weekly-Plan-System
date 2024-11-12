@@ -1,62 +1,78 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agendamento Semanal</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css" rel="stylesheet">
 </head>
 
 <body>
-  <h1>Agendamento Semanal</h1>
+  <div class="container">
+    <header>
+      <h1>Agendamento Semanal</h1>
+      <button id="toggleFormButton" class="btn-primary">Adicionar Nova Atividade</button>
+    </header>
 
-  <form id="scheduleForm">
-    <label>Data:</label>
-    <input type="date" id="data" required>
-  
-    <label>Hora Início:</label>
-    <input type="time" id="horaInicio" required>
-  
-    <label>Hora Fim:</label>
-    <input type="time" id="horaFim" required>
-  
-    <label>Tipo de Atividade:</label>
-    <select id="tipoAtividadeId" required></select>
-  
-    <label>Valência:</label>
-    <select id="valenciaId" required></select>
-  
-    <button type="submit">Agendar Atividade</button>
-  </form>  
+    <div class="form-container">
+      <!-- Formulário de inserção de atividades, inicialmente escondido -->
+      <form id="scheduleForm" style="display: none;">
+        <label for="data">Data:</label>
+        <input type="date" id="data" required>
 
-  <!-- Overlay e Modal para editar atividade -->
-  <div id="modalOverlay"></div>
-  <div id="editModal">
-    <form id="editForm">
-      <label>Data:</label>
-      <input type="date" id="editData" required>
-  
-      <label>Hora Início:</label>
-      <input type="time" id="editHoraInicio" required>
-  
-      <label>Hora Fim:</label>
-      <input type="time" id="editHoraFim" required>
-  
-      <label>Tipo de Atividade:</label>
-      <select id="editTipoAtividadeId" required></select>
-  
-      <label>Valência:</label>
-      <select id="editValenciaId" required></select>
-  
-      <button type="submit">Salvar Alterações</button>
-      <button type="button" id="deleteButton">Excluir</button>
-      <button type="button" id="cancelButton">Cancelar</button>
-    </form>
-  </div>  
+        <label for="horaInicio">Hora Início:</label>
+        <input type="time" id="horaInicio" required>
 
-  <div id="calendar"></div>
+        <label for="horaFim">Hora Fim:</label>
+        <input type="time" id="horaFim" required>
+
+        <label for="tipoAtividadeId">Tipo de Atividade:</label>
+        <select id="tipoAtividadeId" required></select>
+
+        <label for="valenciaId">Valência:</label>
+        <select id="valenciaId" required></select>
+
+        <!-- Checkbox para repetir a atividade semanalmente até o fim do mês -->
+        <label>
+          <input type="checkbox" id="repeatWeekly"> Repetir Atividade Semanalmente até o Final do Mês
+        </label>
+
+        <button type="submit" class="btn-primary">Agendar Atividade</button>
+      </form>
+    </div>
+
+    <!-- Overlay e Modal para editar atividade -->
+    <div id="modalOverlay"></div>
+    <div id="editModal">
+      <form id="editForm">
+        <label for="editData">Data:</label>
+        <input type="date" id="editData" required>
+
+        <label for="editHoraInicio">Hora Início:</label>
+        <input type="time" id="editHoraInicio" required>
+
+        <label for="editHoraFim">Hora Fim:</label>
+        <input type="time" id="editHoraFim" required>
+
+        <label for="editTipoAtividadeId">Tipo de Atividade:</label>
+        <select id="editTipoAtividadeId" required></select>
+
+        <label for="editValenciaId">Valência:</label>
+        <select id="editValenciaId" required></select>
+
+        <button type="submit" class="btn-primary">Salvar Alterações</button>
+        <button type="button" id="deleteButton" class="btn-danger">Excluir</button>
+        <button type="button" id="cancelButton" class="btn-secondary">Cancelar</button>
+      </form>
+    </div>
+
+    <div id="calendar"></div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
   <script src="script.js"></script>
 </body>
+
 </html>

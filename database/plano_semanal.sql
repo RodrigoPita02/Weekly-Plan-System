@@ -31,12 +31,13 @@ CREATE TABLE `plano_atividades` (
   `hora_fim` time NOT NULL,
   `tipo_atividade_id` int DEFAULT NULL,
   `valencia_id` int DEFAULT NULL,
+  `grupo_repeticao` varchar(36) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `tipo_atividade_id` (`tipo_atividade_id`),
   KEY `valencia_id` (`valencia_id`),
   CONSTRAINT `plano_atividades_ibfk_1` FOREIGN KEY (`tipo_atividade_id`) REFERENCES `tipo_atividades` (`id`),
   CONSTRAINT `plano_atividades_ibfk_2` FOREIGN KEY (`valencia_id`) REFERENCES `valencias` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +46,6 @@ CREATE TABLE `plano_atividades` (
 
 LOCK TABLES `plano_atividades` WRITE;
 /*!40000 ALTER TABLE `plano_atividades` DISABLE KEYS */;
-INSERT INTO `plano_atividades` VALUES (69,'2024-11-13','10:00:00','12:00:00',4,4),(70,'2024-11-12','09:00:00','10:00:00',6,7),(71,'2024-11-19','13:00:00','15:00:00',7,6);
 /*!40000 ALTER TABLE `plano_atividades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,4 +115,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-12 12:16:42
+-- Dump completed on 2024-11-12 15:44:37
