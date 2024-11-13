@@ -10,65 +10,71 @@
 </head>
 
 <body>
-  <div class="container">
-    <header>
-      <h1>Agendamento Semanal</h1>
-      <button id="toggleFormButton" class="btn-primary">Adicionar Nova Atividade</button>
-    </header>
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <h2>Agendador</h2>
+      <button id="toggleFormButton" class="btn-primary">+ Nova Atividade</button>
+    </aside>
 
-    <div class="form-container">
-      <!-- Formulário de inserção de atividades, inicialmente escondido -->
-      <form id="scheduleForm" style="display: none;">
-        <label for="data">Data:</label>
-        <input type="date" id="data" required>
+    <main class="content">
+      <header>
+        <h1>Agenda Semanal</h1>
+      </header>
 
-        <label for="horaInicio">Hora Início:</label>
-        <input type="time" id="horaInicio" required>
+      <div class="form-container">
+        <form id="scheduleForm" style="display: none;">
+          <h2>Adicionar Atividade</h2>
+          <label for="data">Data:</label>
+          <input type="date" id="data" required>
 
-        <label for="horaFim">Hora Fim:</label>
-        <input type="time" id="horaFim" required>
+          <label for="horaInicio">Hora Início:</label>
+          <input type="time" id="horaInicio" required>
 
-        <label for="tipoAtividadeId">Tipo de Atividade:</label>
-        <select id="tipoAtividadeId" required></select>
+          <label for="horaFim">Hora Fim:</label>
+          <input type="time" id="horaFim" required>
 
-        <label for="valenciaId">Valência:</label>
-        <select id="valenciaId" required></select>
+          <label for="tipoAtividadeId">Tipo de Atividade:</label>
+          <select id="tipoAtividadeId" required></select>
 
-        <!-- Checkbox para repetir a atividade semanalmente até o fim do mês -->
-        <label>
-          <input type="checkbox" id="repeatWeekly"> Repetir Atividade Semanalmente até o Final do Mês
-        </label>
+          <label for="valenciaId">Valência:</label>
+          <select id="valenciaId" required></select>
 
-        <button type="submit" class="btn-primary">Agendar Atividade</button>
-      </form>
-    </div>
+          <label class="checkbox-label">
+            <input type="checkbox" id="repeatWeekly"> Repetir até o Final do Mês
+          </label>
 
-    <!-- Overlay e Modal para editar atividade -->
-    <div id="modalOverlay"></div>
-    <div id="editModal">
-      <form id="editForm">
-        <label for="editData">Data:</label>
-        <input type="date" id="editData" required>
+          <button type="submit" class="btn-primary">Agendar</button>
+        </form>
+      </div>
 
-        <label for="editHoraInicio">Hora Início:</label>
-        <input type="time" id="editHoraInicio" required>
+      <!-- Modal de edição -->
+      <div id="modalOverlay"></div>
+      <div id="editModal">
+        <form id="editForm">
+          <h2>Editar Atividade</h2>
+          <label for="editData">Data:</label>
+          <input type="date" id="editData" required>
 
-        <label for="editHoraFim">Hora Fim:</label>
-        <input type="time" id="editHoraFim" required>
+          <label for="editHoraInicio">Hora Início:</label>
+          <input type="time" id="editHoraInicio" required>
 
-        <label for="editTipoAtividadeId">Tipo de Atividade:</label>
-        <select id="editTipoAtividadeId" required></select>
+          <label for="editHoraFim">Hora Fim:</label>
+          <input type="time" id="editHoraFim" required>
 
-        <label for="editValenciaId">Valência:</label>
-        <select id="editValenciaId" required></select>
+          <label for="editTipoAtividadeId">Tipo de Atividade:</label>
+          <select id="editTipoAtividadeId" required></select>
 
-        <button type="submit" class="btn-primary">Salvar Alterações</button>
-        <button type="button" id="deleteButton" class="btn-danger">Excluir</button>
-        <button type="button" id="cancelButton" class="btn-secondary">Cancelar</button>
-      </form>
-    </div>
+          <label for="editValenciaId">Valência:</label>
+          <select id="editValenciaId" required></select>
 
-    <div id="calendar"></div>
+          <button type="submit" class="btn-primary">Salvar</button>
+          <button type="button" id="deleteButton" class="btn-danger">Excluir</button>
+          <button type="button" id="cancelButton" class="btn-secondary">Cancelar</button>
+        </form>
+      </div>
+
+      <div id="calendar"></div>
+    </main>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
