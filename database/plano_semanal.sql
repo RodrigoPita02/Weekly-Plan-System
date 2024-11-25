@@ -37,7 +37,7 @@ CREATE TABLE `plano_atividades` (
   KEY `valencia_id` (`valencia_id`),
   CONSTRAINT `plano_atividades_ibfk_1` FOREIGN KEY (`tipo_atividade_id`) REFERENCES `tipo_atividades` (`id`),
   CONSTRAINT `plano_atividades_ibfk_2` FOREIGN KEY (`valencia_id`) REFERENCES `valencias` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=134 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,6 +46,7 @@ CREATE TABLE `plano_atividades` (
 
 LOCK TABLES `plano_atividades` WRITE;
 /*!40000 ALTER TABLE `plano_atividades` DISABLE KEYS */;
+INSERT INTO `plano_atividades` VALUES (120,'2024-11-13','10:30:00','12:30:00',6,7,'grupo_338frhfii'),(121,'2024-11-20','10:30:00','12:30:00',6,7,'grupo_338frhfii'),(122,'2024-11-27','10:30:00','12:30:00',6,7,'grupo_338frhfii'),(123,'2024-11-14','12:00:00','14:00:00',4,6,'grupo_tvtso3tux'),(124,'2024-11-21','12:00:00','14:00:00',4,6,'grupo_tvtso3tux'),(125,'2024-11-28','12:00:00','14:00:00',4,6,'grupo_tvtso3tux'),(126,'2024-11-12','10:00:00','12:00:00',4,5,'grupo_bj54o38sw'),(127,'2024-11-19','10:00:00','12:00:00',4,5,'grupo_bj54o38sw'),(128,'2024-11-26','10:00:00','12:00:00',4,5,'grupo_bj54o38sw'),(132,'2024-11-19','13:00:00','15:00:00',7,6,'grupo_9lcbucoit'),(133,'2024-11-26','13:00:00','15:00:00',7,6,'grupo_9lcbucoit');
 /*!40000 ALTER TABLE `plano_atividades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,4 +116,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-12 15:44:37
+-- Dump completed on 2024-11-25 13:32:53
